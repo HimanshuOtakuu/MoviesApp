@@ -1,4 +1,5 @@
-import React, { createContext } from 'react';
+
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -33,16 +34,54 @@ const store = createStore(rootReducer, applyMiddleware(logger, thunk));
 //   movies: [{name: "Superman"}]
 // })
 
-export const StoreContext = createContext();
+// export const StoreContext = createContext();
 
-class Provider extends React.Component{
-  render(){
-    const { store } = this.props;
-    return <StoreContext.Provider value={ store }>
-      {this.props.children}
-    </StoreContext.Provider>
-  }
-}
+// class Provider extends React.Component{
+//   render(){
+//     const { store } = this.props;
+//     return <StoreContext.Provider value={ store }>
+//       {this.props.children}
+//     </StoreContext.Provider>
+//   }
+// }
+
+// export function connect (callBack){
+//   return function (Component){
+//     class ConnectedComponent extends React.Component{
+//       constructor (props){
+//         super (props);
+//         this.unsubscribe=this.props.store.subscribe(() =>{
+//           this.forceUpdate();
+//         });
+//       }
+
+//       componentWillUnmount(){
+//         this.unsubscribe();
+//       }
+      
+//       render(){
+//         const {store} = this.props;
+//         const state = store.getState();
+//         const dataTobePassedAsProps = callBack(state);
+//         return <Component {...dataTobePassedAsProps} dispatch = {store.dispatch} />
+        
+//       }
+//     };
+//     class ConnectedComponentWrapper extends React.Component {
+//       render(){
+//         return <StoreContext.Consumer>
+//           {(store) => {
+//             return <ConnectedComponent store={store} />
+//           }}
+//         </StoreContext.Consumer>
+//       }
+//     }
+
+//     return ConnectedComponentWrapper;
+//   };
+
+// }
+
 
 console.log("after store",store.getState());
 

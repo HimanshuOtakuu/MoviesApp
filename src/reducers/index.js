@@ -45,7 +45,6 @@ const initialSearchStat = {
 }
 
 export function search (state = initialSearchStat, action){
-    
     switch(action.type){
         case ADD_SEARCH_RESULT:
             return{

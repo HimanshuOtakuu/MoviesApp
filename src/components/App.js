@@ -3,6 +3,7 @@ import { data } from "../data"
 import Navbar from "./Navbar";
 import MovieCard from "./MovieCard";
 import { addMovies, setShowFavourite } from "../action";
+import { StoreContext } from "..";
 
 class App extends React.Component{
   
@@ -40,9 +41,10 @@ class App extends React.Component{
     const { list, favourite, showFav } = movies;
     console.log("state",this.props.store.getState());
     const displayList=showFav?favourite:list;
+
     return (
       <div className="App">
-        <Navbar dispatch={this.props.store.dispatch} search={search}/>
+        <Navbar search={search}/>
         <div className="main"> 
           <div className="tabs">
             <div className={`tab ${showFav?'':'active-tabs'}`} onClick= {() => this.onChangeTab(false)}>Movies</div>
@@ -68,4 +70,14 @@ class App extends React.Component{
   }
 }
 
-export default App;
+class AppWrapper extends React.Component{
+  render(){
+    return(
+      <StoreContext.Consumer>
+        {(store) => <App store={store}/>}
+      </StoreContext.Consumer>
+    );
+  }
+}
+
+export default AppWrapper;

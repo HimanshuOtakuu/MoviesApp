@@ -52,13 +52,13 @@ export function handleMovieSearch(movie){
             .then(Response => Response.json())
             .then(movie => {
                 console.log(movie);
-            })
-
-        dispatch(addMovieSearchResult(movie));
+                dispatch(addMovieSearchResult(movie));
+            })  
     }
 }
 
 export function addMovieSearchResult(movie){
+    
     return{
         type: ADD_SEARCH_RESULT,
         movie

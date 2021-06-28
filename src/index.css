@@ -81,7 +81,7 @@ body {
 #search-btn {
   background: #f2711c;
   height: 43px;
-  color: #fff;
+  color: rgb(255, 0, 0);
   border: none;
   font-size: 15px;
   border-bottom-right-radius: 4px;
